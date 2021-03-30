@@ -1,28 +1,16 @@
-import { Router } from 'express';
-import { Controllers } from './Controllers'
+import { Router, Request, Response, NextFunction } from 'express';
+import { Controllers } from './Controllers';
 
 /* REACT ROUTER */
 
-const router = Router();
+export const router = Router();
+
+router.get('/', Controllers.home);
 
 router.get('/login', Controllers.loginForm);
 
 router.post('/login', Controllers.loginResponse);
 
-export { router };
+router.get('/logout', Controllers.logOut);
 
-
-
-/* THAT OTHER WAY YOU LEARNED */
-// interface App {
-//   get(endpoint: string, callback: (req: Request, res: Response) => void): void;
-//   post(endpoint: string, callback: (req: Request, res: Response) => void): void
-// }
-
-// const router = (app: App): void => {
-//   app.get('/login', Controllers.loginForm);
-
-//   app.post('/login', Controllers.loginResponse)
-// }
-
-// export { router };
+router.get('/protected', Controllers.requireAuth, Controllers.protected);
