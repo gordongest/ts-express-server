@@ -13,7 +13,8 @@ router.post('/login', Controllers_1.Controllers.loginResponse);
 //   get(endpoint: string, callback: (req: Request, res: Response) => void): void;
 //   post(endpoint: string, callback: (req: Request, res: Response) => void): void
 // }
-// export const router = (app: App): void => {
+// const router = (app: App): void => {
 //   app.get('/login', Controllers.loginForm);
 //   app.post('/login', Controllers.loginResponse)
 // }
+// export { router };

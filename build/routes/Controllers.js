@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Controllers = void 0;
-exports.Controllers = {
+const Controllers = {
     loginForm(req, res) {
         res.send(`
       <form method="POST">
@@ -19,6 +19,12 @@ exports.Controllers = {
     },
     loginResponse(req, res) {
         const { email, password } = req.body;
-        res.send(email + password);
+        if (email) {
+            res.status(200).send(email.toUpperCase());
+        }
+        else {
+            res.send('Email must be provided');
+        }
     },
 };
+exports.Controllers = Controllers;

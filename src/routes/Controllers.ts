@@ -1,7 +1,11 @@
 import { Request, Response } from 'express';
 
-export const Controllers = {
-  loginForm(req: Request, res: Response): void {
+interface RequestBody extends Request {
+  body: { [key: string]: string | undefined };
+}
+
+const Controllers = {
+  loginForm(req: RequestBody, res: Response): void {
     res.send(`
       <form method="POST">
         <div>
@@ -17,10 +21,15 @@ export const Controllers = {
     `);
   },
 
-  loginResponse(req: Request, res: Response): void {
-    const { email, password } = req.body
+  loginResponse(req: RequestBody, res: Response): void {
+    const { email, password } = req.body;
 
-    res.send(email + password)
+    if (email) {
+      res.status(200).send(email.toUpperCase());
+    } else {
+      res.send('Email must be provided');
+    }
   },
-
 };
+
+export { Controllers };

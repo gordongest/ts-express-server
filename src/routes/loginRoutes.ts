@@ -1,7 +1,8 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
 import { Controllers } from './Controllers'
 
 /* REACT ROUTER */
+
 const router = Router();
 
 router.get('/login', Controllers.loginForm);
@@ -18,8 +19,10 @@ export { router };
 //   post(endpoint: string, callback: (req: Request, res: Response) => void): void
 // }
 
-// export const router = (app: App): void => {
+// const router = (app: App): void => {
 //   app.get('/login', Controllers.loginForm);
 
 //   app.post('/login', Controllers.loginResponse)
 // }
+
+// export { router };
